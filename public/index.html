@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IP TALK — talk to anyone, on any network, in one room</title>
+<meta name="description" content="IP TALK is a room-based chat app. Enter a room number, room IP and a username to join the same conversation from any network, anywhere. Built by Snehasish Jana." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23142B3D'/%3E%3Ctext x='50' y='66' font-size='54' text-anchor='middle' fill='%23F2A64B' font-family='monospace'%3E%3F%3E%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<!-- ===================== LANDING VIEW ===================== -->
+<main id="view-landing">
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">IP</span><span class="brand-word">TALK</span>
+      </div>
+      <a class="topbar-cta" href="#join">Open a room</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">a small relay for a simple idea</p>
+        <h1>Three strangers, three networks, one room.</h1>
+        <p class="hero-lede">
+          One person is on office wifi. Another is on mobile data across the country.
+          A third is behind a home router that's never let anything in.
+          None of that matters here — they type the same room number and room
+          IP, pick a name, and they're in the same conversation.
+        </p>
+        <div class="hero-actions">
+          <a href="#join" class="btn btn-primary">Join or start a room</a>
+          <a href="#how" class="btn btn-ghost">See how it connects</a>
+        </div>
+      </div>
+
+      <div class="hero-diagram" aria-hidden="true">
+        <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg">
+          <!-- network A -->
+          <g class="net-cluster">
+            <rect x="20" y="30" width="150" height="90" rx="10" class="net-box"/>
+            <text x="95" y="20" class="net-label" text-anchor="middle">Home network</text>
+            <circle cx="60" cy="75" r="6" class="node-dot"/>
+            <text x="60" y="100" class="node-label" text-anchor="middle">Riya</text>
+          </g>
+          <!-- network B -->
+          <g class="net-cluster">
+            <rect x="350" y="30" width="150" height="90" rx="10" class="net-box"/>
+            <text x="425" y="20" class="net-label" text-anchor="middle">Mobile data</text>
+            <circle cx="460" cy="75" r="6" class="node-dot"/>
+            <text x="460" y="100" class="node-label" text-anchor="middle">Aman</text>
+          </g>
+          <!-- network C -->
+          <g class="net-cluster">
+            <rect x="185" y="300" width="150" height="90" rx="10" class="net-box"/>
+            <text x="260" y="290" class="net-label" text-anchor="middle">Office wifi</text>
+            <circle cx="260" cy="345" r="6" class="node-dot"/>
+            <text x="260" y="370" class="node-label" text-anchor="middle">Priyo</text>
+          </g>
+
+          <!-- connecting lines -->
+          <path d="M95,120 C 150,180 200,190 245,215" class="link-line"/>
+          <path d="M425,120 C 370,180 320,190 275,215" class="link-line"/>
+          <path d="M260,300 C 260,270 260,250 260,235" class="link-line"/>
+
+          <!-- room hub -->
+          <g class="room-hub">
+            <rect x="190" y="160" width="140" height="60" rx="12" class="hub-box"/>
+            <text x="260" y="184" class="hub-label" text-anchor="middle">ROOM 4471</text>
+            <text x="260" y="204" class="hub-sub" text-anchor="middle">198.51.100.7</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how">
+    <div class="wrap">
+      <h2>How a room comes together</h2>
+      <ol class="how-steps">
+        <li>
+          <span class="step-index">1</span>
+          <div>
+            <h3>Agree on a room number and room IP</h3>
+            <p>Whoever starts the conversation picks a room number and a room IP and shares both with everyone who should join — over text, email, wherever.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-index">2</span>
+          <div>
+            <h3>Everyone enters the same two values, with any username</h3>
+            <p>No accounts, no invite links to click through. Each person just needs a name for themselves — it only has to be unique inside that room.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-index">3</span>
+          <div>
+            <h3>The room opens, wherever people are</h3>
+            <p>Office wifi, home broadband, mobile data — the room doesn't care. Messages arrive for everyone in it, live.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="how-note">
+        A quick honest note: a browser can't dial an arbitrary IP address directly — no website can, that door is closed for everyone's protection.
+        So the "room IP" you enter works as a second shared key, alongside the room number, that this server uses to place everyone in the correct room. It's the same idea video-call apps use behind the scenes, just written in plain terms here.
+      </p>
+    </div>
+  </section>
+
+  <section id="join" class="join-section">
+    <div class="wrap join-wrap">
+      <div class="join-intro">
+        <h2>Open your room</h2>
+        <p>Pick any room number and room IP with your group. First one in creates the room; everyone after just joins it.</p>
+      </div>
+
+      <form id="join-form" class="join-panel" autocomplete="off">
+        <div class="field">
+          <label for="roomNumber">Room number</label>
+          <input id="roomNumber" name="roomNumber" inputmode="numeric" placeholder="e.g. 4471" required />
+        </div>
+        <div class="field">
+          <label for="roomIp">Room IP address</label>
+          <input id="roomIp" name="roomIp" placeholder="e.g. 198.51.100.7" required />
+        </div>
+        <div class="field">
+          <label for="username">Your name in this room</label>
+          <input id="username" name="username" maxlength="24" placeholder="e.g. Riya" required />
+        </div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block" id="join-btn">Join room</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>IP TALK — built by <strong>Snehasish Jana</strong>.</p>
+      <p class="footer-status" id="conn-status">connecting…</p>
+    </div>
+  </footer>
+</main>
+
+<!-- ===================== CHAT ROOM VIEW ===================== -->
+<section id="view-room" class="room-view" hidden>
+  <header class="room-header">
+    <div class="room-header-left">
+      <span class="brand-mark small">IP</span><span class="brand-word small">TALK</span>
+      <span class="room-tag" id="room-tag">Room —</span>
+    </div>
+    <button id="leave-btn" class="btn btn-ghost btn-small">Leave room</button>
+  </header>
+
+  <div class="room-body">
+    <aside class="room-sidebar">
+      <h3>In this room</h3>
+      <ul id="user-list" class="user-list"></ul>
+    </aside>
+
+    <div class="room-main">
+      <div id="message-list" class="message-list" aria-live="polite"></div>
+      <form id="message-form" class="message-form">
+        <input id="message-input" placeholder="Type a message" autocomplete="off" maxlength="2000" />
+        <button type="submit" class="btn btn-primary btn-small">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
